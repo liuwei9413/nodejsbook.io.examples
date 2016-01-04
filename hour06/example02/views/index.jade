@@ -89,3 +89,37 @@ block content
       After
 
           <section id="foo" class="one two three four"></section>
+    hr
+
+    - var myname = "fengge"
+    h1 Hello #{myname}!
+    hr
+
+    - users = ['liuwei', 'fengge', 'haha', 'kobe']
+    div
+        - each user in users
+            p= user
+    hr
+
+    - usernames = ['one', 'two', 'three']
+    ul
+        for username in usernames
+            li= username
+    hr
+
+    - objs = {'firstname':'liu', 'lastname':'wei'}
+    ul
+        each val, key in objs
+            li #{key}: #{val}
+    hr
+
+    - sex = true
+    if (sex)
+      p You are a man
+    else
+      p You are a women
+    hr
+
+    script alert('aaa')
+
+

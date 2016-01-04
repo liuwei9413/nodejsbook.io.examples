@@ -2,6 +2,7 @@ function sleep(milliseconds) {
   var start = new Date().getTime();
   while ((new Date().getTime() - start) < milliseconds){
   }
+  console.log('while循环时间为:', milliseconds, 'ms');
 }
 
 function fetchPage() {

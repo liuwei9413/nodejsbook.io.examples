@@ -19,6 +19,11 @@ http.createServer(function (req, res) {
       'Location': '/'
     });
     res.end();
+  } else if (pathname === '/home') {
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+    res.end('我是home\n');
   } else {
       res.writeHead(404, {
       'Content-Type': 'text/plain'

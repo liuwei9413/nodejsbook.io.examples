@@ -10,3 +10,13 @@ block content
   mixin users(users)
   - more_users = ['Mark', 'Elena', 'Dave', 'Pete', 'Keiron']
   mixin users(more_users)
+  hr
+
+  mixin objs(obj)
+    ul
+        each val, key in obj
+            li #{key} : #{val}
+  - people = {name : 'fengge', age : '25', job : 'web'}
+  mixin objs(people)
+
+
