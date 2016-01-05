@@ -30,6 +30,17 @@ app.get('/', routes.index);
 app.post('/', function(req, res){
   res.send(req.body);
 });
+app.post('/about', function(req, res) {
+    res.send(req.body);
+});
+
+//路有中使用参数
+app.get('/users/:name', function(req, res) {
+    res.send('show content for user id ' + req.params.name);
+});
+//路由分离到单独文件
+app.get('/list', routes.list);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

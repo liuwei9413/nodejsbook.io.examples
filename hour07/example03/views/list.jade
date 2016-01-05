@@ -1,0 +1,23 @@
+//extends layout
+
+block content
+  section.container
+    h2 List example
+
+    mixin lists(lists)
+        ul
+            each list in lists
+                li= list
+
+    - lists = ['aaaaaaaaaa', 'bbbbbbbbbbbb', 'dddddd']
+    mixin lists(lists)
+
+    - lists2 = ['111111111', '22222222', '33333333']
+    mixin lists(lists2)
+
+    mixin objs(obj)
+        ul
+            each val, key in obj
+                li the key is #{key} and the value is #{val}
+    - objList = {name: 'fengge', age: 25, job: 'web'}
+    mixin objs(objList)
