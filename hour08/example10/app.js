@@ -56,12 +56,15 @@ app.get('/tasks/new', function(req, res){
 });
 
 app.post('/tasks', function(req, res){
-  var task = new Task(req.body.task);
+    console.log(req.body.task);
+  var task = new Task({task: req.body.task});
   task.save(function (err) {
     if (!err) {
+      //req.flash('info', 'Task created');
       res.redirect('/tasks');
     }
     else {
+      //req.flash('warning', err);
       res.redirect('/tasks/new');
     }
   });

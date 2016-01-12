@@ -13,5 +13,5 @@ vows.describe('Async testing').addBatch({
     'it should not be empty': function (err, stat) {
       assert.notStrictEqual(stat.size, 0);
     }
-  },
-}).run(); 
+  }
+}).run();

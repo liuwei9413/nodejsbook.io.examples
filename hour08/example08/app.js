@@ -40,6 +40,7 @@ app.get('/', routes.index);
 
 app.get('/tasks', function(req, res){
   Task.find({}, function (err, docs) {
+      //console.log(docs);
     res.render('tasks/index', {
       title: 'Tasks index view',
       docs: docs
@@ -54,7 +55,7 @@ app.get('/tasks/new', function(req, res){
 });
 
 app.post('/tasks', function(req, res){
-  var task = new Task(req.body.task);
+  var task = new Task({task: req.body.task});
   task.save(function (err) {
     if (!err) {
       res.redirect('/tasks');
@@ -67,13 +68,14 @@ app.post('/tasks', function(req, res){
 
 app.get('/tasks/:id/edit', function(req, res){
   Task.findById(req.params.id, function (err, doc){
+      //console.log(doc);
     res.render('tasks/edit', {
       title: 'Edit Task View',
       task: doc
     });
   });
 });
-
+//更新任务
 app.put('/tasks/:id', function(req, res){
   Task.findById(req.params.id, function (err, doc){
     doc.updated_at = new Date();
@@ -88,6 +90,17 @@ app.put('/tasks/:id', function(req, res){
     });
   });
 });
+//删除任务
+app.del('/tasks/:id', function(req, res) {
+    Task.findById(req.params.id, function(err, doc) {
+        console.log(doc);
+        if (!doc) return next(new NotFound('Document not found'));
+        doc.remove(function() {
+            res.redirect('/tasks');
+        });
+    });
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

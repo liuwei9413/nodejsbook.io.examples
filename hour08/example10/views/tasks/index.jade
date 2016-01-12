@@ -5,14 +5,8 @@ block content
   p
     a(href='/tasks/new', class='btn btn-primary') Add a Task
 
-  p= messages
-  each message in messages
-    div.alert.alert-success
-     p= message
 
-  - if (messages.length)
-      div.alert.alert-success
-        p cocky
+
   - if (docs.length)
     table.table
       tr
@@ -28,8 +22,5 @@ block content
                 form(method='post', action='/tasks/' + task.id)
                   input(name='_method', value='DELETE', type='hidden')
                   button.btn.btn-danger(type='submit') Delete
-                 
-                 
-
   - else
     p You don't have any tasks! 
